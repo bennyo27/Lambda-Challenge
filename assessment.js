@@ -7,7 +7,7 @@ After writing your function uncomment the matching function reference at the bot
 // 1. Write a function called helloWorld that returns the string 'Hello World!'.
 
 function helloWorld() {
-
+    return "Hello World!";
 }
 
 /*
@@ -23,8 +23,14 @@ function helloWorld() {
              lambdaSchool(8); // returns 8
 */
 
-function lambdaSchool() {
-
+function lambdaSchool(num) {
+    if (num % 5 == 0 && num % 3 == 0)
+        return "Lambda School";
+    else if (num % 5 == 0)
+        return "School";
+    else if (num % 3 == 0)
+        return "Lambda";
+    return num;
 }
 
 /*
@@ -38,8 +44,16 @@ function lambdaSchool() {
              longestString(['JavaScript', 'HTML', 'CSS']); // returns 'JavaScript'
 */
 
-function longestString() {
-
+function longestString(str) {
+    var index = 0;
+    var stringLength = str[0].length;
+    for (var i = 1; i < str.length; i++) {
+        if (str[i].length > stringLength) {
+            index = i;
+            stringLength = str[i].length;
+        }
+    }
+    return str[index];
 }
 
 /*
@@ -63,13 +77,19 @@ function longestString() {
              computeUserAverageAge(users); // returns 62 (This number is rounded up from 61.6666)
 */
 
-function computeUserAverageAge() {
-
+function computeUserAverageAge(users) {
+    //totAge = total age
+    totAge=0;
+    for(var i = 0; i< users.length; i++){
+        var element = users[i];
+        totAge += element.age;
+    }
+    return Math.round(totAge/users.length);
 }
 
 module.exports = {
- helloWorld,
- lambdaSchool,
- longestString,
- computeUserAverageAge
+    helloWorld,
+    lambdaSchool,
+    longestString,
+    computeUserAverageAge
 };
